@@ -3,7 +3,7 @@ import config from "./config.json";
 import Quagga from "quagga";
 
 const Scanner = props => {
-  const { onDetected } = props;
+  const { onDetected, onBackClick} = props;
 
   useEffect(() => {
     Quagga.init(config, err => {
@@ -70,7 +70,12 @@ const Scanner = props => {
     // If you do not specify a target,
     // QuaggaJS would look for an element that matches
     // the CSS selector #interactive.viewport
-    <div id="interactive" className="viewport" />
+    <div>
+      <div id="interactive" className="viewport" />
+        <button type="button" className="btn btn-primary" onClick={onBackClick}>
+          Go Back
+        </button>
+    </div>
   );
 };
 

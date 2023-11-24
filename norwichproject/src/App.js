@@ -3,6 +3,7 @@ import IngredientsSelector from './IngredientsSelector';
 import Scanner from './Scanner';
 import React, { useState } from 'react';
 
+
 function Header({prompt,other, onButtonClick}) {
 
   return <header className="App-header">
@@ -41,6 +42,8 @@ function Conditions({conditions,onConditionClicked}) {
 
 
 
+
+
 function App() {
   const [currentView, setCurrentView] = useState('ingredients');
 
@@ -48,11 +51,14 @@ function App() {
     setCurrentView('scanner');
   };
 
-  const handleDetected = (code) => {
-    // Handle the barcode code
-    alert(`Barcode detected: ${code}`);
-    // Optionally switch back to ingredients view or handle accordingly
+  const showIngredientsSelector = () => {
     setCurrentView('ingredients');
+  };
+
+  const handleDetected = (code) => {
+    alert(`Barcode detected: ${code}`);
+    // Optionally, you can automatically switch back to the ingredients view
+    // showIngredientsSelector();
   };
 
   return (
@@ -60,13 +66,14 @@ function App() {
       {currentView === 'ingredients' ? (
         <IngredientsSelector onScanClick={showScanner} />
       ) : (
-        <Scanner onDetected={handleDetected} />
+        <Scanner onDetected={handleDetected} onBackClick={showIngredientsSelector} />
       )}
     </div>
   );
 }
 
 export default App;
+
   
 
 //   const [hasEczema, setHasEczema] = useState(false);
