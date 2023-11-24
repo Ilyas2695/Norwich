@@ -71,7 +71,7 @@ const problemList ={
 };
 
 export default function Results({ingredients}){
-console.log({ingredients})
+    console.log({ingredients})
 const triggers= ingredients.filter(ingredient=>{
     const possibleIngredient = problemList[ingredient]
     return (possibleIngredient && possibleIngredient.includes("ibs"))
@@ -80,7 +80,7 @@ const triggers= ingredients.filter(ingredient=>{
 const hasTriggers = triggers.length;
 return    <>
     {hasTriggers?"👎":"👍"}
-    {triggers.map(t=><div key={t}>{t}</div>)}
+    {triggers.map(t=><div>{t}</div>)}
     </>
     
 }
