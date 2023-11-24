@@ -43,6 +43,7 @@ function IngredientsSelector() {
               <li key={index}>{ingredient}</li>
             ))}
           </ul>
+          <button type="button" class="btn btn-primary">Scan barcode</button>
         </div>
       </div>
     </div>
