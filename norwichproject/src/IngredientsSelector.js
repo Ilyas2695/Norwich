@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-function IngredientsSelector() {
+function IngredientsSelector({ onScanClick }) {
   // List of ingredients
   const [ingredients, setIngredients] = useState(['Sugar', 'Salt', 'Butter', 'Flour', 'Eggs', 'Milk']);
 
@@ -43,7 +43,8 @@ function IngredientsSelector() {
               <li key={index}>{ingredient}</li>
             ))}
           </ul>
-          <button type="button" class="btn btn-primary">Scan barcode</button>
+          <button type="button" className="btn btn-primary" onClick={onScanClick}>Scan Barcode</button>
+
         </div>
       </div>
     </div>

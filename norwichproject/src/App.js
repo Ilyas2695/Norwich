@@ -1,7 +1,7 @@
 import logo from './logo.svg';
-import { useState } from 'react';
 import IngredientsSelector from './IngredientsSelector';
 import Scanner from './Scanner';
+import React, { useState } from 'react';
 
 function Header({prompt,other, onButtonClick}) {
 
@@ -29,15 +29,45 @@ function Conditions({conditions,onConditionClicked}) {
   </>)
 }
 
+// function App() {
+//   return (
+//     <div>
+//       <IngredientsSelector />
+//       <Scanner onDetected={(value) => {
+//        alert(value)
+//       }} />
+//     </div>
+//   );
+
+
+
 function App() {
+  const [currentView, setCurrentView] = useState('ingredients');
+
+  const showScanner = () => {
+    setCurrentView('scanner');
+  };
+
+  const handleDetected = (code) => {
+    // Handle the barcode code
+    alert(`Barcode detected: ${code}`);
+    // Optionally switch back to ingredients view or handle accordingly
+    setCurrentView('ingredients');
+  };
+
   return (
     <div>
-      <IngredientsSelector />
-      <Scanner onDetected={(value) => {
-       alert(value)
-      }} />
+      {currentView === 'ingredients' ? (
+        <IngredientsSelector onScanClick={showScanner} />
+      ) : (
+        <Scanner onDetected={handleDetected} />
+      )}
     </div>
   );
+}
+
+export default App;
+  
 
 //   const [hasEczema, setHasEczema] = useState(false);
 //   const [hasIbs, setHasIbs] = useState(false);
@@ -54,6 +84,6 @@ function App() {
 //       }} />
 //     </div>
 //   );
-}
 
-export default App;
+
+// export default App;
