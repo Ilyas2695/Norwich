@@ -19,29 +19,31 @@ function IngredientsSelector() {
   };
 
   return (
-    <div>
-      <h2>Select Unhealthy Ingredients</h2>
-      <ul>
-        {ingredients.map((ingredient, index) => (
-          <li key={index}>
-            <label>
-              <input 
-                type="checkbox" 
-                checked={unhealthyIngredients.includes(ingredient)} 
-                onChange={() => handleCheckboxChange(ingredient)} 
-              />
-              {ingredient}
-            </label>
-          </li>
-        ))}
-      </ul>
+    <div className="centered-container">
       <div>
-        <h3>Unhealthy Ingredients:</h3>
+        <h2>Select Unhealthy Ingredients</h2>
         <ul>
-          {unhealthyIngredients.map((ingredient, index) => (
-            <li key={index}>{ingredient}</li>
+          {ingredients.map((ingredient, index) => (
+            <li key={index}>
+              <label>
+                <input 
+                  type="checkbox" 
+                  checked={unhealthyIngredients.includes(ingredient)} 
+                  onChange={() => handleCheckboxChange(ingredient)} 
+                />
+                {ingredient}
+              </label>
+            </li>
           ))}
         </ul>
+        <div>
+          <h3>Chosen Ingredients:</h3>
+          <ul>
+            {unhealthyIngredients.map((ingredient, index) => (
+              <li key={index}>{ingredient}</li>
+            ))}
+          </ul>
+        </div>
       </div>
     </div>
   );

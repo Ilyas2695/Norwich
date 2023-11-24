@@ -11,3 +11,18 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+.centered-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh; /* Use viewport height to ensure full height coverage */
+}
+
+.centered-container > div {
+  /* Optional: You can set a max-width and more styling here */
+  max-width: 600px; /* Example width */
+  width: 100%; /* Full width on smaller screens */
+  padding: 20px; /* Some padding around the content */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Optional: for better visibility */
+}
