@@ -70,12 +70,8 @@ const Scanner = props => {
     // If you do not specify a target,
     // QuaggaJS would look for an element that matches
     // the CSS selector #interactive.viewport
-    <div>
-      <div id="interactive" className="viewport" />
-        <button type="button" className="btn btn-primary" onClick={onBackClick}>
-          Go Back
-        </button>
-    </div>
+    <div id="interactive" className="viewport" />
+ 
   );
 };
 
