@@ -4,32 +4,6 @@ import Scanner from './Scanner';
 import React, { useState } from 'react';
 
 
-function Header({prompt,other, onButtonClick}) {
-
-  return <header className="App-header">
-    <img src={logo} className="App-logo" alt="logo" />
-    <p>
-      { 1 === 2 ? "Hello" : "Goodbye"} <code>src/App.js</code> and save to .
-    </p>
-    <a
-      className="App-link"
-      target="_blank"
-      rel="noopener noreferrer"
-      onClick={onButtonClick}
-    >
-      {prompt} {other}
-    </a>
-  </header>;
-}
-
-
-function Conditions({conditions,onConditionClicked}) {
-  return(<>
-    <div><input type="checkbox" onChange={(e) => onConditionClicked("IBS")} checked={conditions.ibs} />IBS</div>
-    <div><input type="checkbox" onChange={(e) =>  onConditionClicked("ECZEMA") } checked={conditions.eczema} />eczema</div>
-  </>)
-}
-
 // function App() {
 //   return (
 //     <div>
@@ -43,7 +17,6 @@ function Conditions({conditions,onConditionClicked}) {
 
 
 
-
 function App() {
   const [currentView, setCurrentView] = useState('ingredients');
 
@@ -51,14 +24,11 @@ function App() {
     setCurrentView('scanner');
   };
 
-  const showIngredientsSelector = () => {
-    setCurrentView('ingredients');
-  };
-
   const handleDetected = (code) => {
+    // Handle the barcode code
     alert(`Barcode detected: ${code}`);
-    // Optionally, you can automatically switch back to the ingredients view
-    // showIngredientsSelector();
+    // Optionally switch back to ingredients view or handle accordingly
+    setCurrentView('ingredients');
   };
 
   return (
@@ -66,7 +36,7 @@ function App() {
       {currentView === 'ingredients' ? (
         <IngredientsSelector onScanClick={showScanner} />
       ) : (
-        <Scanner onDetected={handleDetected} onBackClick={showIngredientsSelector} />
+        <Scanner onDetected={handleDetected} />
       )}
     </div>
   );
